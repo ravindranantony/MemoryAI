@@ -27,11 +27,11 @@ table#t01 th {
 </head>
 <body>
 
-<h2>ChatGPT Prompt Categories and Examples</h2>
+<h2>AI Prompt Categories and Examples</h2>
 <table id="t01">
   <tr>
     <th>Category</th>
-    <th>Sample Prompts</th> 
+    <th>Prompts</th> 
   </tr>
   <tr>
     <td><a href="#">Education</a></td>
@@ -80,22 +80,29 @@ table#t01 th {
 </table>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var links = document.getElementsByTagName("a");
-  for (var i = 0; i < links.length; i++) {
-    (function () {
-      var ln = links[i];
-      var clickHandler = function (e) {
-        e.preventDefault();
-        // Get the link text
-        var text = ln.innerText || ln.textContent;
-        // Send message to background script
-        chrome.runtime.sendMessage({command: "copy", text: text});
-      };
-      ln.addEventListener('click', clickHandler, false);
-    })();
-  }
-});
-</script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.getElementsByTagName("a");
+    for (var i = 0; i < links.length; i++) {
+      (function () {
+        var ln = links[i];
+        var clickHandler = function (e) {
+          e.preventDefault();
+          // Get the link text
+          var text = ln.innerText || ln.textContent;
+          // Copy text to clipboard
+          navigator.clipboard.writeText(text)
+            .then(() => {
+              console.log('Text copied to clipboard');
+            })
+            .catch(err => {
+              console.error('Could not copy text: ', err);
+            });
+        };
+        ln.addEventListener('click', clickHandler, false);
+      })();
+    }
+  });
+  </script>
+  
 </body>
 </html>
