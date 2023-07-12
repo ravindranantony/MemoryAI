@@ -1,24 +1,23 @@
 {
-    "manifest_version": 2,
-    "name": "My Extension",
-    "version": "1.0",
-    "description": "An extension to paste content with a shortcut",
-    "permissions": ["clipboardWrite", "clipboardRead", "activeTab"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "commands": {
-      "_execute_browser_action": {
-        "suggested_key": {
-          "default": "Ctrl+M",
-          "mac": "MacCtrl+M"
-        }
+  "manifest_version": 2,
+  "name": "My Extension",
+  "version": "1.0",
+  "description": "An extension to paste content with a shortcut",
+  "permissions": ["clipboardWrite", "clipboardRead", "activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+M",
+        "mac": "MacCtrl+M"
       }
-    },
-    "browser_action": {
-      "default_icon": "icon.png",
-      "default_popup": "popup.html"
     }
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
   }
-  
+}

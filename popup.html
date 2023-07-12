@@ -1,14 +1,101 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
 <body>
-<table>
+
+<h2>ChatGPT Prompt Categories and Examples</h2>
+<table id="t01">
   <tr>
-    <td><a href="#" id="link1">Link 1</a></td>
+    <th>Category</th>
+    <th>Sample Prompts</th> 
   </tr>
   <tr>
-    <td><a href="#" id="link2">Link 2</a></td>
+    <td><a href="#">Education</a></td>
+    <td><a href="#">"Explain the theory of relativity in simple terms."<br>
+        "What are the main causes and effects of the French Revolution?"<br>
+        "Teach me how to solve quadratic equations."</a></td>
+  </tr>
+  <tr>
+    <td><a href="#">Science & Technology</a></td>
+    <td><a href="#">"What are the basics of Python programming?"<br>
+        "Describe how a vaccine works."<br>
+        "Explain the principle of quantum computing."</a></td>
+  </tr>
+  <tr>
+    <td><a href="#">Business</a></td>
+    <td><a href="#">"Give me a SWOT analysis of Tesla, Inc."<br>
+        "What are the key principles of project management?"<br>
+        "Describe effective strategies for digital marketing."</a></td>
+  </tr>
+  <tr>
+    <td><a href="#">Wellness & Health</a></td>
+    <td><a href="#">"What are the benefits of regular exercise?"<br>
+        "Explain the importance of a balanced diet."<br>
+        "Describe techniques for stress management."</a></td>
+  </tr>
+  <tr>
+    <td><a href="#">Creative Writing</a></td>
+    <td><a href="#">"Write a short story about a journey to Mars."<br>
+        "Create a dialogue between two characters arguing about their favorite books."<br>
+        "Describe a haunted house."</a></td>
+  </tr>
+  <tr>
+    <td><a href="#">Entertainment</a></td>
+    <td><a href="#">"Tell me a joke."<br>
+        "Write a review of the latest Marvel movie."<br>
+        "Tell me interesting facts about chess."</a></td>
+  </tr>
+  <tr>
+    <td><a href="#">Generative Art & Images</a></td>
+    <td><a href="#">"Describe a method for creating fractal art."<br>
+        "How can I use Perlin noise to create generative landscapes?"<br>
+        "What are the steps to create a generative portrait using facial recognition data?"<br>
+        "Explain how to use generative adversarial networks (GANs) for art creation."<br>
+        "Describe a process to create abstract art using cellular automata."</a></td>
   </tr>
 </table>
-<script src="popup.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var links = document.getElementsByTagName("a");
+  for (var i = 0; i < links.length; i++) {
+    (function () {
+      var ln = links[i];
+      var clickHandler = function (e) {
+        e.preventDefault();
+        // Get the link text
+        var text = ln.innerText || ln.textContent;
+        // Send message to background script
+        chrome.runtime.sendMessage({command: "copy", text: text});
+      };
+      ln.addEventListener('click', clickHandler, false);
+    })();
+  }
+});
+</script>
 </body>
 </html>

@@ -1,14 +1,8 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    copyToClipboard(request.text);
+chrome.commands.onCommand.addListener(function (command) {
+    if (command === "_execute_browser_action") {
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {command: "paste"});
+      });
+    }
   });
-  
-  function copyToClipboard(text) {
-    var input = document.createElement('textarea');
-    document.body.appendChild(input);
-    input.value = text;
-    input.focus();
-    input.select();
-    document.execCommand('Copy');
-    input.remove();
-  }
   
