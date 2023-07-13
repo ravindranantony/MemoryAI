@@ -22,18 +22,8 @@ To use MemoryAI, follow these steps:
    ```
    git clone https://github.com/username/MemoryAI.git
    ```
-
-2. Install the required dependencies.
-   ```
-   npm install
-   ```
-
-3. Start the application.
-   ```
-   npm start
-   ```
-
-4. Access the application through your web browser at `http://localhost:3000`.
+2. Setup your IIS or VSCode LiveServer to run the application in your local
+3. Access the application through your web browser at `http://localhost:3000`.
 
 ## Contributing
 
